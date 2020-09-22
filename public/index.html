@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <title>Stadium</title>
+    <style>
+      html, body {
+        padding: 0;
+        margin: 0;
+
+        width: 100%;
+        height: 100%;
+
+        font-family: 'Roboto', sans-serif;
+
+        background: #000;
+        color: #fff;
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      #app {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(to left, #222, #333);
+        min-height: 5rem;
+      }
+
+      header > nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 2rem;
+        vertical-align: middle;
+      }
+
+      header > nav > a {
+        font-size: 1.5rem;
+        margin-right: 2rem;
+      }
+
+      .logo {
+        transform: rotate(180deg);
+      }
+
+      a, a:visited, a:link {
+        color: #999;
+        text-decoration: none;
+      }
+      
+      a:hover {
+        color: #fff;
+      }
+
+      .game {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        flex: 1 0 auto;
+         
+        padding-bottom: 8rem;
+
+        background: url('raptor.jpg') no-repeat center;
+        background-size: cover;
+      }
+
+      .start, .stop {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0,0,0,.5);
+        border: .25rem solid #f00;
+        border-radius: 100%;
+        width: 8rem;
+        height: 8rem;
+        padding: 0;
+        margin: 0;
+      }
+      
+      video {
+        pointer-events: none;
+        display: none;
+      }
+
+      video.running {
+        display: block;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <nav>
+          <a href="#">
+            <svg class="logo" width="44" height="30" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.94 5.38a16.8 16.8 0 0 1 14.5.3c.26.13.59 0 .68-.29l.85-2.54a.62.62 0 0 0-.32-.75C18.08.35 9.6-2.43.26 4.16a.62.62 0 0 0-.2.76l1.97 4.44c.13.3.47.44.78.33 2.26-.83 5.67-1.7 9.22-1.19a16.2 16.2 0 0 0-5.8 2.16.62.62 0 0 0-.25.78l1.21 2.78c.11.24.43.3.62.1.45-.47.95-.82 1.36-1.06a14.34 14.34 0 0 1 8.13-1.74c.28.01.54-.16.63-.43l.9-2.7a.62.62 0 0 0-.26-.73C15.92 6 11.84 4.6 5.92 5.38h.02z" fill="#fff"></path></svg> 
+          </a>
+          <a href="#">
+            Inicio
+          </a>
+          <a href="#">
+            Tienda
+          </a>
+        </nav>
+      </header>
+      <div class="game">
+        <video :class="getVideoClasses()" ref="video"></video>
+        <button v-if="!hasStarted" class="start" type="button" @click="handleStartClick">
+          <svg width="48" height="48" viewBox="0 0 32 32">
+            <path d="M8 0 L32 16 L8 32 Z" fill="#fff"></path>
+          </svg>
+        </button>
+        <button v-else class="stop" type="button" @click="handleStopClick">
+          <svg width="48" height="48" viewBox="0 0 32 32">
+            <rect x="0" y="0" width="32" height="32" fill="#fff"></rect>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/index.js"></script>
+  </body>
+</html>
