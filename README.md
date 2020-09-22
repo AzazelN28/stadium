@@ -24,6 +24,6 @@ Right now the application is a huge monolithic codebase based on Koa, socket.io 
 - [ ] Currently audio isn't working, I installed naudiodon and started to do some research but I didn't have time to finish it.
 - [ ] Make a fully functional Vagrantfile to test locally with different machines.
 - [ ] Separate codebase in different services that runs with `docker-compose.yml`.
-- [ ] Look for better options to implement virtual player (Rust maybe?)
+- [ ] Look for better options to implement "virtual player" (Rust maybe?)
 
 Made with :heart: by [AzazelN28](https://github.com/azazeln28/stadium.git)
