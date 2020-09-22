@@ -11,6 +11,14 @@ npm i
 
 IMPORTANT! I used an old version of Node because it's the latest one that works with [robot-js](https://getrobot.net).
 
+## Running
+
+```sh
+npm run start
+```
+
+IMPORTANT! Be sure that you called the `nvm use` command or that you have the proper Node.js version otherwise robot-js will not compile.
+
 ## Architecture
 
 Right now the application is a huge monolithic codebase based on Koa, socket.io and wrtc. But it could be split in three different services:
